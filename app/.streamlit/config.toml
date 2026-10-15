@@ -1,0 +1,27 @@
+[theme]
+base = "light"
+primaryColor = "#1F6FB2"
+backgroundColor = "#F4F7F3"
+secondaryBackgroundColor = "#E6EDE5"
+textColor = "#15322A"
+borderColor = "#D3DDD2"
+linkColor = "#1F6FB2"
+baseRadius = "10px"
+font = "Figtree:https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap"
+headingFont = "Bricolage Grotesque:https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&display=swap"
+headingFontWeights = [700, 650, 600, 600, 600, 600]
+metricValueFontWeight = 650
+chartCategoricalColors = ["#1F6FB2", "#1BA37A", "#E0A100", "#D9542B", "#6A55D6"]
+
+[theme.sidebar]
+backgroundColor = "#15322A"
+secondaryBackgroundColor = "#21463B"
+textColor = "#E7EFE9"
+primaryColor = "#9CC7F0"
+borderColor = "#2E5548"
+
+[server]
+headless = true
+
+[browser]
+gatherUsageStats = false

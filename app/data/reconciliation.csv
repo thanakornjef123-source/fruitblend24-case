@@ -1,0 +1,5 @@
+step,rows,gross_revenue_thb,units
+Raw rows,124397,31276898.6,620700
+− Exact duplicates,-372,-91488.03,-1817
+− Non-menu rows,-370,-38478.0,-760
+= Clean rows,123655,31146932.57,618123

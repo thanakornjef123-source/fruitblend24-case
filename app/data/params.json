@@ -1,0 +1,87 @@
+{
+  "price": {
+    "Watermelon": 45.0,
+    "Pineapple": 49.0,
+    "Guava": 49.0,
+    "PassionFruit": 65.0,
+    "MixedBerryPremium": 89.0
+  },
+  "packaging": {
+    "Watermelon": 6.0,
+    "Pineapple": 6.0,
+    "Guava": 6.0,
+    "PassionFruit": 6.0,
+    "MixedBerryPremium": 8.0
+  },
+  "labor": {
+    "Watermelon": 5.0,
+    "Pineapple": 5.0,
+    "Guava": 5.5,
+    "PassionFruit": 6.0,
+    "MixedBerryPremium": 7.0
+  },
+  "discount": {
+    "RC000": 0.0,
+    "RC101": 0.15,
+    "RC102": 0.2,
+    "RC103": 0.12
+  },
+  "lift": {
+    "RC101": 0.32143628061831486,
+    "RC102": 0.7131792376749648,
+    "RC103": 0.10599179886989152
+  },
+  "elasticity_sku": {
+    "Guava": -2.607204322376248,
+    "MixedBerryPremium": -1.1574310528634772,
+    "PassionFruit": -1.3850406947369394,
+    "Pineapple": -1.7372279252455078,
+    "Watermelon": -1.6267970061816994
+  },
+  "overhead": {
+    "Pattaya_Central": 180000.0,
+    "Pattaya_Beach": 150000.0,
+    "BKK_Sukhumvit": 200000.0,
+    "BKK_Ladprao": 140000.0
+  },
+  "plan_price": {
+    "Watermelon": 47,
+    "Pineapple": 51,
+    "Guava": 49,
+    "PassionFruit": 75,
+    "MixedBerryPremium": 89
+  },
+  "plan_waste_cap": {
+    "PassionFruit": 0.06
+  },
+  "double_days_outlook": [
+    "2026-09-09",
+    "2026-10-10",
+    "2026-11-11"
+  ],
+  "double_days_history": [
+    "2025-09-09",
+    "2025-10-10",
+    "2025-11-11",
+    "2025-12-12",
+    "2026-01-01",
+    "2026-02-02",
+    "2026-03-03",
+    "2026-04-04",
+    "2026-05-05",
+    "2026-06-06",
+    "2026-07-07",
+    "2026-08-08"
+  ],
+  "mb_monthly_decay": 0.8559107415122931,
+  "growth": 1.0,
+  "core_waste_ratio": 0.042422979457912215,
+  "rc101_other_sku_change": 0.005188546994496113,
+  "rc102_repeat_cups_needed": 3651.67451612162,
+  "rc102_repeat_per_incr_cup": 0.2595174844099487,
+  "growth_check": {
+    "aug26_per_day": 1272.179679144385,
+    "sep25_per_day": 1269.7154659073838,
+    "ratio": 1.0019407601964117
+  }
+}

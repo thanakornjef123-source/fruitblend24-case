@@ -1,0 +1,27 @@
+#,sheet,check,finding,rows_affected,action,rationale
+1,cost_assumptions,Structure,Two different tables stacked in one sheet (SKU unit costs rows 1-5; kitchen overhead under a text header),9,Split into cost_sku and kitchen_overhead tables,Each table needs its own columns to join correctly
+2,orders_hourly,Product names,"31 raw names (Thai/English, casing, typos e.g. 'สัปปะรด', 'smoothy', trailing spaces) for 5 real products",124023,Mapped 28 name variants to 5 SKUs by keyword (see name_mapping sheet),"All variants of one SKU carry the identical price list, confirming they are the same product"
+3,orders_hourly,Exact duplicates,372 rows are byte-for-byte copies of another row; spread across all 12 months,372,Removed (kept first copy),"After removal every date×hour×kitchen×SKU×platform appears exactly once, so the copies are double-counts, not real orders"
+4,orders_hourly,Non-menu items,"370 rows for 'แก้วเปล่า' (empty cup), 'น้ำส้มปั่น (เมนูทดลอง)' (test menu), 'Combo Set A (2 แก้ว)'; prices random (0/35/59/99), some at 0 THB; 38,478 THB revenue",370,Excluded from analysis (kept in excluded_rows sheet),"Not one of the 5 menu items, no cost data exists for them, and <0.04% of revenue"
+5,orders_hourly,Revenue = units × price,OK — 0 violations,0,None needed,Validation check
+6,orders_hourly,day_of_week matches date,OK — 0 violations,0,None needed,Validation check
+7,orders_hourly,Price = base price × (1 − promo discount),OK — 0 violations,0,None needed,Validation check
+8,orders_hourly,RC101 SKU suffix matches item sold,OK — 0 violations,0,None needed,Validation check
+9,orders_hourly,RC102 only on double dates (1/1…12/12),OK — 0 violations,0,None needed,Validation check
+10,orders_hourly,RC103 only in Jun–Oct,OK — 0 violations,0,None needed,Validation check
+11,orders_hourly,Mixed Berry not sold before 1 Mar 2026 launch,OK — 0 violations,0,None needed,Validation check
+12,orders_hourly,Unknown platform / rate code,OK — 0 violations,0,None needed,Validation check
+13,orders_hourly,Missing values,OK — 0 violations,0,None needed,Validation check
+14,orders_hourly,Units ≤ 0 or price ≤ 0,OK — 0 violations,0,None needed,Validation check
+15,orders_hourly,Coverage,All 365 days × 4 kitchens present; 833 kitchen-days have <24 hours of rows (min 19),833,Treat a missing hour×SKU row as 0 units sold,The export only writes rows when something sold; quiet hours are mostly 2–5 am
+16,orders_hourly,Outliers (units_sold),"352 rows above Q3+3×IQR for their SKU×kitchen (max 67 cups/hr). 51% fall on promo codes (vs 9% of all rows), 86% at lunch/late-night peaks (vs 31%), 82% in Mar–May hot season",352,"Kept, flagged in is_demand_spike","Pattern is consistent (hot-season weekends, promo days, peak hours) and revenue reconciles — genuine demand, not errors"
+17,weekly_fruit_cost,Types,week_start stored as text,239,Converted to date,Needed for joins
+18,weekly_fruit_cost,Nulls / duplicates / non-Monday weeks,OK — 0 found,0,None needed,Validation check
+19,weekly_fruit_cost,Gap at launch,"Mixed Berry launched Sun 1 Mar 2026 but its first cost week is Mon 2 Mar, so 1 Mar sales/waste have no fruit cost",1,"Added week 2026-02-23 for Mixed Berry using the 2 Mar cost (33.69 THB), flagged is_imputed",Nearest available price; affects one day only
+20,weekly_fruit_cost,Volatility,"PassionFruit +38% w/c 01 Jun 2026. Range per cup: Guava 8.2–11.3, MixedBerryPremium 33.5–54.0, PassionFruit 17.1–29.7, Pineapple 7.2–10.9, Watermelon 6.9–8.4",1,Kept as is,"Plausible seasonal input-cost swing (the brief calls this the volatile cost); matters for the P&L, not an error"
+21,waste_daily,Types,date stored as text,6570,Converted to date,Needed for joins
+22,waste_daily,Missing rows,"6 kitchen×SKU×day combinations absent: Pattaya_Beach/Guava 16 Mar, Pattaya_Beach/PassionFruit 13 Oct, BKK_Sukhumvit/Guava 12 Sep, BKK_Sukhumvit/Guava 26 Nov, BKK_Ladprao/Watermelon 19 May, BKK_Ladprao/Watermelon 23 Jul",6,"Inserted with units = median of the same kitchen×SKU ±7 days, flagged is_imputed","Every other day has a waste record (including zeros), so a missing row means unrecorded, not zero"
+23,waste_daily,Cost formula check,est_waste_cost = units × (weekly fruit cost + packaging) reproduces 6566/6566 rows exactly,0,Formula confirmed; used to fill gaps,Validation check
+24,waste_daily,Null cost,"4 rows with units but no cost — all Mixed Berry on 1 Mar 2026 (launch day, no fruit-cost week)",4,"Filled with the confirmed formula using the backfilled 2 Mar fruit cost, flagged is_imputed",Same root cause as the fruit-cost gap
+25,waste_daily,Outliers (units_wasted),"Highest waste days are all Mixed Berry in launch weeks (max 53 cups, 3 Mar Pattaya_Central; 563 cups in launch week)",10,Kept,"Consistent with over-preparing a new item — a business finding, not a data error"
+26,monthly_budget,Assumption,Budget is flat 2.70M revenue / 0.70M GP every month (note says it ignores seasonality and input-cost volatility),12,Kept as given,"Keep in mind when reading variance — part of any miss is the budget, not performance"

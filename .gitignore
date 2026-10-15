@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.DS_Store
+# raw case workbook from the assessment is not committed
+FruitBlend24_Intern_Case_Data.xlsx
+clean/
+results.pkl

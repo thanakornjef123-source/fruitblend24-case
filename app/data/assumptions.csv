@@ -1,0 +1,11 @@
+item,assumption,basis / note
+Gross profit definition,Revenue − platform commission − fruit − packaging − labor − waste cost; overhead below GP,Matches budget GP margin (~26%)
+Commission,"LINE MAN 30%, Grab 24% of gross revenue; outlook uses Jun–Aug 2026 platform mix per kitchen×SKU",platform_commission_rate
+Promo baseline,"Same kitchen×SKU, non-promo days within ±28 days, same weekday/weekend type",Controls for season and weekend
+Elasticity,"Promo-day log-lift ÷ log(1−discount); RC101 SKU-specific used as mid case, −0.8 / −2.4 as bounds",Promo response may overstate permanent-price response; test first
+Forecast,"Seasonal naive: same weekday last year (t−364), promo days replaced by baseline, growth = 1.00",Aug-26 vs Sep-25 core run-rate ratio = 1.002
+Mixed Berry forecast (status quo),Aug-26 weekday profile × 0.856 per month (Jun–Aug trend),No last-year history
+Fruit cost,Average of last 8 weeks (6 Jul – 31 Aug 2026) held flat,Conservative: Passion Fruit stays at ~28 THB
+Waste,Jun–Aug 2026 wasted/sold ratio per kitchen×SKU; plan caps Passion Fruit at 6%,Core SKUs already 3–6%
+Overhead,"670k THB/month (4 kitchens), unchanged",cost_assumptions
+Mixed Berry delisting,No demand transfer to other SKUs assumed,Conservative; any transfer is upside
