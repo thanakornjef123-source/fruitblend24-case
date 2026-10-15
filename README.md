@@ -53,5 +53,3 @@ Run in order: `python 01_clean_data.py FruitBlend24_Intern_Case_Data.xlsx`, then
 - Platform-specific A/B price tests, and the cost of staffing overnight hours (2% of cups sell 2–6am).
 - Negotiating LINE MAN commission: each point is worth about 0.17M a year.
 
-## Tools 
-Tools: Python (pandas, numpy, scipy) for cleaning and analysis; matplotlib and Plotly for charts; Streamlit for the app (deployed on Streamlit Community Cloud); openpyxl/Excel for the workbooks; Git/GitHub for version control.
