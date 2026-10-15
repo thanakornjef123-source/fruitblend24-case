@@ -1,4 +1,5 @@
 # FruitBlend24 — Analyst Case Submission
+https://fruitblend24-case-lf3egbkbwlbkxrys7ucrrv.streamlit.app/
 
 ## What is in this folder
 
